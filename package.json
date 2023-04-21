@@ -1,0 +1,17 @@
+{
+  "name": "arras",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "google-closure-library": "^20230411.0.0",
+    "ws": "^8.13.0"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "license": "GPL-3.0"
+}

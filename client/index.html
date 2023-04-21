@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" id="mainBody">
+<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+<style type="text/css">
+    body {
+        overflow: hidden;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Arras.io</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Arras.io: A fan-made clone of diep.io! This is an Arras server hosted by Ɦﻉɭɭƈคፕ and Fillygroove, which contains some interesting additions...">
+    <meta name="robots" content="index, follow">
+    <meta property="og:image" content="./bg.png" />
+    <meta property="og:image:width" content="52" />
+    <meta property="og:image:height" content="52" />
+    <link rel="stylesheet" href="main.css" />
+    <script>
+        /*global location, localStorage*/
+        let VERSION = localStorage.getItem('versionHash');
+        (function versionControl() {
+            let request = new XMLHttpRequest(),
+                url = '/vhash';
+            console.log("Checking version...");
+            return new Promise((resolve, reject) => {
+                request.open('GET', url);
+                request.onload = () => {
+                    resolve(request.response);
+                    console.log('Version check successful.');
+                };
+                request.onerror = () => {
+                    reject(request.statusText);
+                    console.log('Version check failed!');
+                    console.log(request.statusText);
+                };
+                request.send();
+            });
+        })().then(function resolveVersion(data) {
+            localStorage.setItem('versionHash', data);
+            if (VERSION !== data) {
+                console.log("Updating!");
+                localStorage.setItem('updated', 'datgudshit');
+                location.reload(true);
+            }
+        });
+    </script>
+    <!-- Favicons -->
+    <link rel="manifest" href="">
+    <meta name="msapplication-TileColor" content="#8ABC3F">
+    <meta name="msapplication-TileImage" content="">
+    <meta name="theme-color" content="#8ABC3F">
+</head>
+
+<body oncontextmenu="return false;" id="mainBody">
+    <div id="gameAreaWrapper">
+        <canvas id="gameCanvas" tabindex="1" id="cvs" tabindex="1"></canvas>
+    </div>
+    <div id="mainWrapper">
+        <div id="startMenuWrapper">
+            <div id="startMenu">
+                <div id="twitterHolder" class="startMenuHolder">
+                    <iframe src="" width="350" height="250" allowtransparency="true" frameborder="0"></iframe>
+                    <div id="bottomHolder">
+                        <h5 class="nopadding" style="margin:0; display:inline"> </h5>
+                        <form action="https://discord.gg/JgDrfBSjZF" method="get" target="_blank">
+                            <input id="discord1" type="submit" value="Discord">
+                        </form>
+                        <form action="" method="get" target="_blank">
+                            <input id="discord3" type="submit" value="example">
+                        </form>
+                        <form action="" method="get" target="_blank">
+                            <input id="discord3" type="submit" value="example">
+                        </form>
+                        <form action="" method="post" target="_blank">
+                            <input id="discord4" type="submit" value="example">
+                        </form>
+                        <form action="" method="get" target="_blank">
+                            <input id="discord4" type="submit" value="example">
+                        </form>
+                        <form action="" method="get" target="_blank">
+                            <input id="discord3" type="submit" value="example">
+                        </form>
+                    </div>
+                </div>
+                <div class="startMenuHolder">
+                    <div class="sliderHolder">
+                        <div class="slider" id="startMenuSlidingContent">
+                            <center><img src="https://cdn.glitch.global/d8c30435-a1d9-4c5d-96f8-be731a3b1086/favicon-96x96-k.png?v=1681816902498" /></center>
+                            <h1>Woomy Arras.io</h1>
+                            <div id="serverName">
+                                <h4 class="nopadding">Connecting...</h4>
+                            </div>
+                            <input type="text" autofocus tabindex="1" spellcheck="false" placeholder="This is the tale of:" id="playerNameInput" maxlength="36" />
+                            <input type="text" class="conceal" tabindex="3" placeholder="Beta or Senior Token" id="playerKeyInput" maxlength="64" />
+                        </div>
+                        <div class="slider" id="startMenuSlidingTrigger">
+                            <h3 class="nopadding">View Options/Help ⬇</h3>
+                        </div>
+                        <div class="slider" id="startMenuSlidingContent"><br>
+                            <optionsHeader>Miscellaneous Controls:</optionsHeader>
+                            <table>
+                                <tr>
+                                    <td><b>E</b>: Autofire</td>
+                                    <td><b>C</b>: Autospin</td>
+                                </tr>
+                                <tr>
+                                    <td><b>R</b>: AI override</td>
+                                    <td><b>N</b>: Level up</td>
+                                </tr>
+                                <tr>
+                                    <td><b>M</b>: Maximize stats</td>
+                                    <td><b>U</b>: Toggle class tree</td>
+                                </tr>
+                                <tr>
+                                    <td><b>← & →</b>: Cycle class tree</td>
+                                    <td><b>Z</b>: Cycle class tree colors</td>
+                                </tr>
+                            </table>
+                            <optionsHeader>Options:</optionsHeader>
+                            <select id="optColors" tabindex="-1">
+                                <option value="classic">Classic Diep</option>
+                                <option value="normal">Light Colors</option>
+                                <option value="dark">Dark Colors</option>
+                                <option value="natural">Natural</option>
+                                <option value="forest">Forest (Fan-made)</option>
+                                <option value="midnight">Midnight (Fan-made)</option>
+                                <option value="pastel">Snow (Fan-made)</option>
+                                <option value="ocean">Coral Reef (Fan-made)</option>
+                                <option value="badlands">Badlands (Fan-made)</option>
+                                <option value="bleach">Bleach (Fan-made)</option>
+                                <option value="beta_arras">Beta Arras (Fan-made)</option>
+                                <option value="neon">Neon (Fan-made)</option>
+                                <option value="haunted_house">Haunted House (Fan-made)</option>
+                                <option value="pumpkin_theme">Pumpkin (Fan-made)</option>
+                                <option value="solarized_dark">Solarized Dark (Fan-made)</option>
+                                <option value="christmas">Christmas (Fan-made)</option>
+                                <option value="bubblegum">Bubblegum (Fan-made)</option>
+                            </select>
+                            <select id="optBorders" tabindex="-1">
+                                <option value="normal">Soft Borders</option>
+                                <option value="dark">Dark Borders</option>
+                                <option value="borderless">No Borders</option>
+                                <option value="neon">Neon Mode</option>
+                                <option value="glass">Glass Mode</option>
+                            </select>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label><input id="optScreenshotMode" tabindex="-1" class="checkbox" type="checkbox"> Screenshot Mode</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label><input id="optNoPointy" tabindex="-1" class="checkbox" type="checkbox"> Use Miter Edges</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label><input id="optFancy" tabindex="-1" class="checkbox" type="checkbox"> Low Graphics</label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <label><input id="optTwoRows" tabindex="-1" class="checkbox" type="checkbox"> Two Upgrade Rows</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <label><input id="optMessages" tabindex="-1" class="checkbox" type="checkbox"> Disable Messages</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="position: relative; bottom: -10px;">
+                        <button id="startButton" tabindex="2">Play</button>
+                    </div>
+                </div>
+    <div class="startMenuHolder" allowtransparency="false">
+                    <iframe id="patchNotesIFrame" src="/changelog.html" seamless="seamless" frameborder="0">Patch notes should go here. If you see this message, then something went wrong!</iframe>
+                </div>
+          </div>
+        </div>
+    </div>
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="./app.js"></script>
+    <script>
+        /*global $*/
+        let clicked = true;
+        $("#startMenuSlidingTrigger").on('click', function() {
+            if (clicked) {
+                clicked = false;
+                $(this).html('<h3 class="nopadding">Close Options/Help ⬆</h3>');
+                $(".slider").css({
+                    "top": "-265px"
+                });
+            } else {
+                clicked = true;
+                $(this).html('<h3 class="nopadding">View Options/Help ⬇</h3>');
+                $(".slider").css({
+                    "top": 0
+                });
+            }
+        });
+    </script>
+    <script>
+        /*global $*/
+        $(document).ready(function() {
+            $("#twitterHolder").css({
+                "height": "100%"
+            });
+        });
+    </script>
+</body>
+</html>
